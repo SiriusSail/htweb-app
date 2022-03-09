@@ -1,10 +1,12 @@
-import { Table, Popconfirm, Button } from 'antd';
+import { Table, Popconfirm, Button, message } from 'antd';
+import { ColumnsType } from 'antd/lib/table/interface';
+import ProductsStore from '@/store/productsStore';
 
-const ProductList: React.FC<{ products: { name: string }[]; onDelete: (id: string) => void }> = ({
-  onDelete,
-  products,
-}) => {
-  const columns = [
+const ProductList: React.FC<{
+  products: { name: string }[];
+  onDelete: (id: string) => void;
+}> = ({ onDelete, products }) => {
+  const columns: ColumnsType<any> = [
     {
       title: 'Name',
       dataIndex: 'name',
@@ -23,4 +25,24 @@ const ProductList: React.FC<{ products: { name: string }[]; onDelete: (id: strin
   return <Table dataSource={products} columns={columns} />;
 };
 
-export default ProductList;
+const Index = () => {
+  const { productList } = ProductsStore.useContainer();
+  return (
+    <div>
+      <ProductList
+        products={productList}
+        onDelete={() => {
+          message.error('删除测试');
+        }}
+      />
+    </div>
+  );
+};
+
+export default () => {
+  return (
+    <ProductsStore.Provider>
+      <Index />
+    </ProductsStore.Provider>
+  );
+};
