@@ -1,5 +1,5 @@
 import { Table, Popconfirm, Button, message } from 'antd';
-import { ColumnsType } from 'antd/lib/table/interface';
+import type { ColumnsType } from 'antd/lib/table/interface';
 import ProductsStore from '@/store/productsStore';
 
 const ProductList: React.FC<{
