@@ -1,13 +1,18 @@
 import { createContainer } from 'unstated-next';
 
+export type ProductListType = {
+  id: string;
+  name: string;
+};
+
 export default createContainer(() => {
-  const productList = [
+  const productList: ProductListType[] = [
     {
-      id: 1,
+      id: '1',
       name: 'unstated-next',
     },
     {
-      id: 2,
+      id: '2',
       name: 'antd',
     },
   ];

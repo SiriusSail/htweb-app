@@ -1,5 +1,6 @@
 import { Table, Popconfirm, Button, message } from 'antd';
 import type { ColumnsType } from 'antd/lib/table/interface';
+import type { ProductListType } from '@/store/productsStore';
 import ProductsStore from '@/store/productsStore';
 
 const ProductList: React.FC<{
@@ -13,7 +14,7 @@ const ProductList: React.FC<{
     },
     {
       title: 'Actions',
-      render: (text, record) => {
+      render: (text, record: ProductListType) => {
         return (
           <Popconfirm title="Delete?" onConfirm={() => onDelete(record.id)}>
             <Button>Delete</Button>
